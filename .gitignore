@@ -1,0 +1,7 @@
+env
+site
+.bundle/
+.jekyll-cache/
+_old
+_site
+Gemfile.lock

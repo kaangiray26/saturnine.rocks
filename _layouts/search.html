@@ -1,0 +1,103 @@
+<search>
+    <form onsubmit="search_index(event)">
+        <label for="query">🔍</label>
+        <input
+            type="search"
+            id="query"
+            name="q"
+            placeholder="Search..."
+            autocomplete="off"
+            onfocus="open_search()"
+            onblur="close_search()"
+        />
+    </form>
+    <search-results>
+        <p>Type to start searching...</p>
+    </search-results>
+</search>
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        // Fetch the content
+        window.documents = await fetch(
+            "{{ '/static/index.json' | url_for }}",
+        ).then((res) => res.json());
+
+        // Create the index
+        window.idx = lunr(function () {
+            this.ref("id");
+            this.field("title");
+            this.field("content");
+            this.metadataWhitelist = ["position"];
+
+            window.documents.forEach((doc) => {
+                this.add(doc);
+            }, this);
+        });
+
+        // Add keyboard shortcuts
+        // Ctrl + K to focus on search
+        document.addEventListener("keydown", (event) => {
+            if (event.ctrlKey && event.key === "k") {
+                event.preventDefault();
+                document.getElementById("query").focus();
+            }
+        });
+    });
+
+    async function open_search() {
+        const search = document.querySelector("search");
+        search.setAttribute("open", "");
+    }
+
+    async function close_search() {
+        setTimeout(() => {
+            const search = document.querySelector("search");
+            search.removeAttribute("open");
+        }, 200);
+    }
+
+    async function search_index(event) {
+        event.preventDefault();
+        const query = document.getElementById("query").value;
+        const results = window.idx.search(query);
+
+        const searchResults = document.querySelector("search-results");
+        searchResults.innerHTML = "";
+
+        if (results.length === 0) {
+            searchResults.innerHTML = "<p>No results found</p>";
+            return;
+        }
+
+        // Display the results with matching positions
+        results.forEach((result) => {
+            // Get the document
+            const doc = window.documents.find((d) => d.id === result.ref);
+
+            // Get the position
+            const metadata = result.matchData.metadata;
+            const positions =
+                metadata[Object.keys(metadata)[0]].content.position;
+
+            // Display the result
+            const resultElement = document.createElement("div");
+            resultElement.setAttribute("data-url", doc.id);
+            resultElement.setAttribute("onclick", "openLocation(event, this)");
+            resultElement.innerHTML = `
+                <h3>${doc.id}</h3>
+                <p>${doc.content.substring(
+                    positions[0][0] - 30,
+                    positions[0][1] + 30,
+                )}</p>
+            `;
+            searchResults.appendChild(resultElement);
+        });
+    }
+
+    async function openLocation(event, el) {
+        event.preventDefault();
+        const href = el.getAttribute("data-url");
+        console.log("Directing to", href);
+        window.location.href = href;
+    }
+</script>

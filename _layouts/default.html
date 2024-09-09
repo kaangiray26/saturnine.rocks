@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=5"
+        />
+        <title>{{ title }}</title>
+        <link rel="canonical" href="{{ canonical }}" />
+        <meta name="description" content="{{ description }}" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="/assets/saturnine.png"
+        />
+    </head>
+    <body>
+        {% include header.html %}
+        <main>
+            <div class="container">{{ content }}</div>
+        </main>
+    </body>
+</html>

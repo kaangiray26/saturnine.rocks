@@ -1,0 +1,24 @@
+title: saturnine
+url: https://www.saturnine.rocks
+author: kaangiray26
+canonical: https://www.saturnine.rocks
+description: A music blog by kaangiray26
+incremental: false
+timezone: Europe/Berlin
+paginate: 30
+plugins:
+    - jekyll-paginate
+    - jekyll-seo-tag
+paginate_path: "/daily/page:num/"
+exclude: ["README.md", "jekyll", "LICENSE", "_old"]
+twitter:
+    username: kaangiray26
+    card: summary
+logo: /assets/saturnine.png
+social:
+    name: kaangiray26
+    links:
+        - https://twitter.com/kaangiray26
+        - https://github.com/kaangiray26
+        - https://www.linkedin.com/in/kaangiray26
+        - https://keybase.io/kaangiray26
