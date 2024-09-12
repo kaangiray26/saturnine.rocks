@@ -6,11 +6,12 @@ description: A music blog by kaangiray26
 incremental: false
 timezone: Europe/Berlin
 paginate: 30
+empty_array: []
 plugins:
     - jekyll-paginate
     - jekyll-seo-tag
 paginate_path: "/daily/page:num/"
-exclude: ["README.md", "jekyll", "LICENSE", "_old"]
+exclude: ["README.md", "jekyll", "LICENSE", "images"]
 twitter:
     username: kaangiray26
     card: summary

@@ -1,10 +1,10 @@
 @import url("/assets/Rowdies/font.css");
 
 :root {
-    --width: 1280px;
+    --width: 1200px;
     --border-color: #d0d7de;
     --background-color: white;
-    --primary-color: #003049;
+    --primary-color: #eec98c;
     --header-background: #31342f;
 }
 
@@ -31,6 +31,15 @@ body {
     background-color: var(--background-color);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -39,13 +48,13 @@ main {
 }
 
 a {
-    color: inherit;
+    color: var(--primary-color);
     text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
 }
 
 a:hover {
-    color: var(--primary-color);
-    cursor: pointer;
     text-decoration: underline;
 }
 
@@ -60,33 +69,100 @@ header img {
     width: auto;
 }
 
-#header-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0.5rem 0;
-}
-
-#header-nav li {
-    display: flex;
-    align-items: center;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-#header-nav li + li::before {
-    content: "•";
-    margin: 0 0.5rem;
-}
-
-#header-nav {
-    background-color: #fff;
-}
-
 header hr {
     width: 100%;
     margin: 0 auto;
     border: none;
     border-bottom: 1px solid var(--border-color);
+}
+
+footer {
+    display: flex;
+    background-color: var(--header-background);
+}
+
+footer > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: var(--width);
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+footer a {
+    color: var(--primary-color);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+search {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+search[open]{
+    display: flex;
+}
+
+search form{
+    display: flex;
+    width: 100%;
+    max-width: var(--width);
+    margin: 0 auto;
+}
+
+search button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    border: none;
+    cursor: pointer;
+}
+
+search input{
+    display: flex;
+    flex: 1 1 auto;
+    border: none;
+    outline: none;
+    padding: 0 1rem;
+}
+
+#header-nav {
+    position: relative;
+    background-color: #fff;
+}
+
+#header-nav ul {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+#header-nav li {
+    display: flex;
+    align-items: center;
+}
+
+#header-nav a {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#header-nav a:hover {
+    color: var(--primary-color);
 }
 
 #header-title {
@@ -98,6 +174,7 @@ header hr {
     width: 100%;
     max-width: var(--width);
     box-sizing: border-box;
+    user-select: none;
 }
 
 #header-title a {
@@ -110,20 +187,112 @@ header hr {
     text-decoration: none !important;
 }
 
+#graph-button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+#graph-button:hover {
+    opacity: 0.6;
+}
+
+#graph-button img {
+    height: 24px;
+    width: auto;
+}
+
+/* Content */
 .container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     width: 100%;
-    min-height: 100%;
     max-width: var(--width);
     margin: 0 auto;
     padding: 2rem 1rem;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 .rendered {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+/* Posts */
+.post-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.post {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.post:first-child {
+    flex-direction: column;
+}
+
+.post div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.post time,
+.post small {
+    color: #909090;
+    font-size: small;
+    font-weight: 700;
+}
+
+.post a {
+    color: inherit;
+    display: flex;
+    font-size: 1.5rem;
+    line-height: 1;
+    font-weight: 500;
+}
+
+.post a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.post img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .post {
+        grid-column: span 1;
+    }
+
+    .post:first-child {
+        grid-column: span 3;
+        flex-direction: row;
+    }
+
+    .post:first-child a {
+        font-size: xxx-large;
+        font-weight: 700;
+    }
+
+    footer > div {
+        flex-direction: row;
+        text-align: end;
+    }
 }

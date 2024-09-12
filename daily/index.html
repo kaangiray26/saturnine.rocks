@@ -2,13 +2,10 @@
 layout: default
 ---
 
-<div align="center">
-    <h1>Daily</h1>
+<div class="container">
+    <div align="center">
+        <h1>Daily</h1>
+    </div>
+    {% assign posts = site.categories.daily | default: site.empty_array | sort: "date" | reverse %}
+    {% include posts.html %}
 </div>
-{% for post in daily %}
-<article>
-    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-    <p>{{ post.date }}</p>
-    <p>{{ post.description }}</p>
-</article>
-{% endfor %}

@@ -5,3 +5,4 @@ site
 _old
 _site
 Gemfile.lock
+dither.py

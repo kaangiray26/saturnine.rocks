@@ -6,20 +6,50 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=5"
         />
-        <title>{{ title }}</title>
+        <title>{{ page.title }}</title>
         <link rel="canonical" href="{{ canonical }}" />
-        <meta name="description" content="{{ description }}" />
-        <link rel="stylesheet" href="/assets/style.css" />
+        <meta name="title" content="saturnine.rocks" />
+        <meta name="description" content="a music blog by kaangiray26" />
+        <meta property="og:site_name" content="saturnine.rocks" />
+        <meta property="og:title" content="saturnine.rocks" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.saturnine.rocks/" />
+        <meta property="og:description" content="a music blog by kaangiray26" />
+        <meta
+            property="og:image"
+            content="https://kaangiray26.github.io/images/saturnine-rocks.png"
+        />
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content="https://www.saturnine.rocks/" />
+        <meta property="twitter:title" content="saturnine.rocks" />
+        <meta
+            property="twitter:description"
+            content="a music blog by kaangiray26"
+        />
+        <meta
+            property="twitter:image"
+            content="https://kaangiray26.github.io/images/saturnine-rocks.png"
+        />
         <link
             rel="shortcut icon"
             type="image/png"
             href="/assets/saturnine.png"
         />
+        <link rel="stylesheet" href="/assets/style.css" />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            href="{{ site.url }}/feed.xml"
+            title="{{ site.title }}"
+        />
+        <!-- These are my social profiles: -->
+        <link href="https://github.com/kaangiray26" rel="me" />
+        <link href="https://mastodon.social/@kaangiray26" rel="me" />
+        {% seo %}
     </head>
     <body>
         {% include header.html %}
-        <main>
-            <div class="container">{{ content }}</div>
-        </main>
+        <main>{{ content }}</main>
+        {% include footer.html %}
     </body>
 </html>

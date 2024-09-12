@@ -6,23 +6,41 @@
         </a>
     </div>
     <nav id="header-nav">
+        <search>
+            <form action="/search" method="get">
+                <input
+                    type="search"
+                    id="query"
+                    name="q"
+                    placeholder="Search for..."
+                    autocomplete="off"
+                />
+                <button type="button" for="query" onclick="close_search()">✕</button>
+            </form>
+        </search>
         <ul>
             <li>
                 <a href="/daily"><small>Daily</small></a>
             </li>
             <li>
-                <a href="/albums"><small>Albums</small></a>
+                <a href="/specials"><small>Specials</small></a>
             </li>
             <li>
-                <a href="/artists"><small>Artists</small></a>
+                <a href="/blog"><small>Blog</small></a>
             </li>
-            <li>
-                <a href="/graph"><small>Graph</small></a>
-            </li>
-            <li>
-                <a href="/archive"><small>Archive</small></a>
+            <li onclick="open_search()">
+                <a><small>Search</small></a>
             </li>
         </ul>
     </nav>
     <hr />
 </header>
+<script>
+    async function open_search() {
+        document.querySelector("search").setAttribute("open", "");
+        document.querySelector("search input").focus();
+    }
+    async function close_search(){
+        document.querySelector("search").removeAttribute("open");
+    }
+</script>

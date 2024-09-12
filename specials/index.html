@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+<div class="container">
+    <div align="center">
+        <h1>Specials</h1>
+    </div>
+    {% assign posts = site.categories.specials | default: site.empty_array | sort: "date" | reverse %}
+    {% include posts.html %}
+</div>
