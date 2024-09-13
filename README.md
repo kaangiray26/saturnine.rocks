@@ -5,3 +5,5 @@ Run with:
 ```
 bundle exec jekyll serve --livereload --watch --drafts --future --livereload-port 3000
 ```
+
+image-rendering: pixelated;

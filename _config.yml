@@ -11,6 +11,7 @@ plugins:
     - jekyll-paginate
     - jekyll-seo-tag
 paginate_path: "/daily/page:num/"
+include: ["_pages"]
 exclude: ["README.md", "jekyll", "LICENSE", "images"]
 twitter:
     username: kaangiray26

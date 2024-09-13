@@ -9,7 +9,7 @@ layout: default
         <small>{{ page.categories[0] | upcase }}</small>
     </div>
 </div>
-<img class="post-img" src="{{ page.image }}" alt="{{ page.title }}" />
+<img class="post-img" src="{{ page.image | default: '/assets/dithered/saturnine-rocks.png' }}" />
 <div class="container">
     {{ content }}
 </div>

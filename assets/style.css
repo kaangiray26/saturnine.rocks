@@ -249,6 +249,10 @@ search input{
     gap: 0.25rem;
 }
 
+.post div a{
+    width: min-content;
+}
+
 .post time,
 .post small {
     color: #909090;
@@ -274,6 +278,8 @@ search input{
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
+    /* placeholder */
+    background-image: url("/assets/dithered/placeholder.png");
 }
 
 @media (min-width: 768px) {
